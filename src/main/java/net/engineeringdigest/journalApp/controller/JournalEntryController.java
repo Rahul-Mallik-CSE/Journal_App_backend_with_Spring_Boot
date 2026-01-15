@@ -1,9 +1,7 @@
 package net.engineeringdigest.journalApp.controller;
 
 import net.engineeringdigest.journalApp.entity.JournalEntry;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,11 +15,28 @@ public class JournalEntryController {
 
     private Map<Long, JournalEntry> journalEntries =new HashMap();
 
-    @GetMapping("/abc")
+    @GetMapping
     public List<JournalEntry> getAll(){
         return new ArrayList<>(journalEntries.values());
     }
+    
+    @PostMapping
+    public void createEntity(@RequestBody JournalEntry myEntry){
+        journalEntries.put(myEntry.getId(),myEntry);
+    }
+    
+    @GetMapping("id/{myid}")
+    public JournalEntry getJournalEntryById(@PathVariable Long myid){
+        return journalEntries.get(myid);
+    }
 
 
+    
+    
+    
+    
+    
+    
+    
 
 }
