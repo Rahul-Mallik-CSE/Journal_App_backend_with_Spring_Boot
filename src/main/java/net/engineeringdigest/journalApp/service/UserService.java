@@ -33,10 +33,14 @@ public class UserService {
     }
 
     public Optional<User> findById(ObjectId id){
-        return UserRepository.findById(id);
+        return userRepository.findById(id);
     }
 
     public void deleteById(ObjectId id){
         userRepository.deleteById(id);
+    }
+
+    public User findByUserName(String userName){
+        return userRepository.findByUserName(userName);
     }
 }
