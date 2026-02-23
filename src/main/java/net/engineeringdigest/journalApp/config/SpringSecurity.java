@@ -11,6 +11,10 @@ public class SpringSecurity extends WebSecurityConfiguration{
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
+        http.authorizeHttpRequests()
+                .antMatchers("/journal/**").authenticated()
+                .anyRequest().permitAll()
+                .and()
+                .httpBasic();
     }
 }
