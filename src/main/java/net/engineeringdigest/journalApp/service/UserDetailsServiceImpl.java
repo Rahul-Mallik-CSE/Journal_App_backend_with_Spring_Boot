@@ -19,7 +19,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         // Implement logic to load user details from the database
         // and return a UserDetailsImpl object
         User user = userRepository.findByUserName(username);
-        if (user == null) {
+        if (user != null) {
             UserDetails userDetails= org.springframework.security.core.userdetails.User.builder()
                     .username(user.getUserName())
                     .password(user.getPassword())
